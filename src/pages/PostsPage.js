@@ -4,8 +4,8 @@ import { PostList } from '../components/PostList';
 
 const PostsPage = ({history}) => {
   return (
-    <PostList onView={(bookId) => {
-      history.push(`/books/${bookId}`);
+    <PostList onView={(postId) => {
+      history.push(`/posts/${postId}`);
     }} />
   );
 };
