@@ -19,6 +19,16 @@ class Post extends React.Component {
       })
   }
 
+  onDelete = () => {
+    const { postId } = this.props;
+    console.log(`del ${postId}`);
+
+    ApiService.delete(`/posts/${postId}`)
+      .catch((err) => {
+        console.log(err)
+      })
+  };
+
   render() {
     const { post, loading, error } = this.props;
 
@@ -35,6 +45,7 @@ class Post extends React.Component {
 
       return (
         <>
+          <button onClick={this.onDelete}>Delete</button>
           <div>{title}</div>
           <div>{body}</div>
           <PostComments comments={comments}/>

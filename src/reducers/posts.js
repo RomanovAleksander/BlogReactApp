@@ -1,7 +1,9 @@
 import {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,
-  FETCH_POSTS_FAILURE
+  FETCH_POSTS_FAILURE,
+  FETCH_CREATE_POST_SUCCESS,
+  FETCH_CREATE_POST_FAILURE
 } from '../actions/posts/types';
 
 const initialState = {
@@ -34,6 +36,16 @@ export const posts = (state = initialState, action) => {
         loading: false,
         error: payload
       };
+    case FETCH_CREATE_POST_SUCCESS:
+      return {
+        ...state,
+        posts: [
+          ...state.posts,
+          payload
+        ]
+      };
+    case FETCH_CREATE_POST_FAILURE:
+      return state;
 
     default:
       return state;

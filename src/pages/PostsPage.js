@@ -1,12 +1,16 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { PostList } from '../components/PostList';
+import { PostCreator } from '../components/PostCreator';
 
 const PostsPage = ({history}) => {
   return (
-    <PostList onView={(postId) => {
-      history.push(`/posts/${postId}`);
-    }} />
+    <>
+      <PostCreator />
+      <PostList onView={(postId) => {
+        history.push(`/posts/${postId}`);
+      }}/>
+    </>
   );
 };
 

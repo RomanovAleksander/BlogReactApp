@@ -1,7 +1,9 @@
 import {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,
-  FETCH_POSTS_FAILURE
+  FETCH_POSTS_FAILURE,
+  FETCH_CREATE_POST_SUCCESS,
+  FETCH_CREATE_POST_FAILURE
 } from './types';
 
 const postsRequested = () => {
@@ -24,8 +26,24 @@ const postsError = (error) => {
   }
 };
 
+const createPostSuccess = (createdPost) => {
+  return {
+    type: FETCH_CREATE_POST_SUCCESS,
+    payload: createdPost
+  }
+};
+
+const createPostError = (error) => {
+  return {
+    type: FETCH_CREATE_POST_FAILURE,
+    payload: error
+  }
+};
+
 export {
   postsRequested,
   postsLoaded,
-  postsError
+  postsError,
+  createPostSuccess,
+  createPostError
 };

@@ -36,6 +36,7 @@ class ApiService {
 
   async delete(url) {
     return this.fetchData(url, {
+      method: 'DEL',
       headers: {
         'Content-Type': 'application/json'
       }
