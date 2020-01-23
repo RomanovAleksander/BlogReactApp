@@ -6,7 +6,7 @@ export const App = () => {
   return (
     <div className="container">
       <Switch>
-        <Redirect from="/" to="/books" exact />
+        <Redirect from="/" to="/posts" exact />
         <Route path="/posts" component={PostsPage} exact />
         <Route component={NotFoundPage} />
       </Switch>

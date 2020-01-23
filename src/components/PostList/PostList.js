@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ApiService from '../../api/api';
 import { postsRequested, postsLoaded, postsError } from '../../actions/posts/actions';
 import { PostListItem } from '../PostListItem';
 import { ErrorIndicator } from '../ErrorIndicator';
@@ -27,6 +28,11 @@ class PostListContainer extends React.Component {
     const { postsRequested, postsLoaded, postsError } = this.props;
 
     postsRequested();
+    ApiService.get('/posts')
+      .then((data) => postsLoaded(data))
+      .catch((err) => {
+        postsError(err)
+      })
   }
 
   render() {
@@ -50,9 +56,9 @@ class PostListContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts,
-    loading: state.loading,
-    error: state.error
+    posts: state.posts.posts,
+    loading: state.posts.loading,
+    error: state.posts.error
   }
 };
 
