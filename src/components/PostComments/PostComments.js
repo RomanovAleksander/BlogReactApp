@@ -1,9 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-const PostComments = ({ post }) => {
-  const { comments } = post;
-
+export const PostComments = ({ comments }) => {
   return (
     <ul className="comments">
       {
@@ -18,11 +15,3 @@ const PostComments = ({ post }) => {
     </ul>
   );
 };
-
-const mapStateToProps = (state) => {
-  return {
-    post: state.post.post,
-  }
-};
-
-export default connect(mapStateToProps)(PostComments);

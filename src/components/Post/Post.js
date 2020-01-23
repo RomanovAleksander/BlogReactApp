@@ -20,10 +20,7 @@ class Post extends React.Component {
   }
 
   render() {
-    const {
-      post, loading,
-      error
-    } = this.props;
+    const { post, loading, error } = this.props;
 
     if (loading) {
       return <div>Loading...</div>
@@ -34,13 +31,13 @@ class Post extends React.Component {
     }
 
     if (post) {
-      const { title, body } = post;
+      const { title, body, comments } = post;
 
       return (
         <>
           <div>{title}</div>
           <div>{body}</div>
-          <PostComments />
+          <PostComments comments={comments}/>
         </>
       );
     }
