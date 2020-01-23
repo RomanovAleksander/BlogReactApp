@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ApiService from '../../api/api';
-import { ErrorIndicator } from '../ErrorIndicator';
 import { postRequested, postLoaded, postError } from '../../actions/post/actions';
+import { ErrorIndicator } from '../ErrorIndicator';
+import { PostComments } from "../PostComments";
 
 class Post extends React.Component {
   componentDidMount() {
@@ -39,6 +40,7 @@ class Post extends React.Component {
         <>
           <div>{title}</div>
           <div>{body}</div>
+          <PostComments />
         </>
       );
     }
