@@ -7,7 +7,6 @@
   * Update Post's information – title and body
   * Delete a Post
   * Create a new Comment
-* [Demo](https://romanovaleksander.github.io/BlogReactApp/)
 
 ### Installing
 ```
