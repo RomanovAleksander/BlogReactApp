@@ -1,4 +1,13 @@
 ### Blog React Application
+### Features
+* The application includes next features:
+  * Display a list of allPosts;
+  * Display a specific Post and its comments
+  * Create a new Post
+  * Update Post's information – title and body
+  * Delete a Post
+  * Create a new Comment
+
 ### Installing
 ```
 $ git clone https://github.com/RomanovAleksander/BlogReactApp.git - clone this repository
