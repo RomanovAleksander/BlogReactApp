@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
+import './styles/style.css';
 
 import { App } from './components/App';
 import { ErrorBoundry } from './components/ErrorBoundry';

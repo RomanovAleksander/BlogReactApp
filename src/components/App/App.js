@@ -1,13 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { PostsPage, PostPage, NotFoundPage } from '../../pages';
-import { PostCreator } from '../PostCreator';
-import {connect} from "react-redux";
+import { PostForm } from '../PostForm';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;  
+`;
 
 const App = (props) => {
   return (
-    <div className="container">
-      {props.isOpen && (<PostCreator />)}
+    <Wrapper>
+      {props.isOpen && (<PostForm />)}
       <Switch>
         <Redirect from="/" to="/posts" exact />
         <Route path="/posts" component={PostsPage} exact />
@@ -20,7 +28,7 @@ const App = (props) => {
         />
         <Route component={NotFoundPage} />
       </Switch>
-    </div>
+    </Wrapper>
   )
 };
 

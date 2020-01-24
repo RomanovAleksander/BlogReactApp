@@ -1,9 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Error = styled.div`
+  text-align: center;
+`;
 
 export const ErrorIndicator = () => {
   return (
-    <div className="error-indicator">
+    <Error>
       Ops... Something went wrong
-    </div>
+    </Error>
   )
 };

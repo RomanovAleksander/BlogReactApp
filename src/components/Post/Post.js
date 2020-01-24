@@ -2,9 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ApiService from '../../api/api';
 import { postRequested, postLoaded, postError } from '../../actions/post/actions';
-import { openForm } from '../../actions/postCreator/actions';
+import { openForm } from '../../actions/postForm/actions';
 import { ErrorIndicator } from '../ErrorIndicator';
-import { PostComments } from "../PostComments";
+import { PostComments } from '../PostComments';
+import styled from "styled-components";
+
+const Header = styled.div`
+  display: flex;
+`;
 
 class Post extends React.Component {
   componentDidMount() {
@@ -51,9 +56,11 @@ class Post extends React.Component {
 
       return (
         <>
-          <button onClick={this.onDelete}>Delete</button>
-          <button onClick={this.onUpdate}>Update</button>
-          <div>{title}</div>
+          <Header>
+            <div><b>{title}</b></div>
+            <button onClick={this.onUpdate}>Update</button>
+            <button onClick={this.onDelete}>Delete</button>
+          </Header>
           <div>{body}</div>
           <PostComments comments={comments}
                         postId={post.id} />

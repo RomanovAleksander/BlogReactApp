@@ -1,7 +1,7 @@
 import React from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
+import { commentSuccess } from '../../actions/comments/actions';
 import ApiService from '../../api/api';
-import { commentSuccess } from "../../actions/comments/actions";
 
 class PostComments extends React.Component {
   constructor(props) {
@@ -39,24 +39,22 @@ class PostComments extends React.Component {
 
     return (
       <>
-        <form className="form" onSubmit={this.onSubmit}>
-          Create comment
-          <label htmlFor="commentBody"> Body</label>
+        <form onSubmit={this.onSubmit}>
+          <label htmlFor="commentBody">Create comment: </label>
           <input
             type="text"
-            className="commentBody_input"
-            placeholder="Body"
-            id="body"
+            placeholder="body"
+            id="commentBody"
+            minLength={1}
             onChange={this.onBodyChange}
             value={body}
+            required
           />
-          <div className="form__footer">
-            <button type="submit" className="button btn">
-              Create
-            </button>
-          </div>
+          <button type="submit">
+            Create
+          </button>
         </form>
-        <ul className="comments">
+        <ol>
           <b>Comments:</b>
           {
             comments.map((comment) => {
@@ -67,7 +65,7 @@ class PostComments extends React.Component {
               )
             })
           }
-        </ul>
+        </ol>
       </>
     );
   }

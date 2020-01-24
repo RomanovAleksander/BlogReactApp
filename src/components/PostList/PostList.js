@@ -2,21 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ApiService from '../../api/api';
 import { postsRequested, postsLoaded, postsError } from '../../actions/posts/actions';
-import { openForm } from '../../actions/postCreator/actions';
+import { openForm } from '../../actions/postForm/actions';
 import { PostListItem } from '../PostListItem';
 import { ErrorIndicator } from '../ErrorIndicator';
+import styled from "styled-components";
+
+const Li = styled.li`
+  list-style: none;
+`;
+
+const Button = styled.button`
+  margin-left: 40px;
+  margin-top: 5px;
+  width: 70px;
+`;
 
 const PostList = ({ posts, onView }) => {
   return (
-    <ul className="post-list">
+    <ul>
       {
         posts.map((post) => {
           return (
-            <li key={post.id}>
+            <Li key={post.id}>
               <PostListItem
                 post={post}
                 onView={() => onView(post.id)} />
-            </li>
+            </Li>
           )
         })
       }
@@ -56,7 +67,7 @@ class PostListContainer extends React.Component {
     if (posts) {
       return (
         <>
-        <button onClick={this.onCreate}>Create</button>
+        <Button onClick={this.onCreate}>Create</Button>
         <PostList onView={onView} posts={posts} />
         </>
       );

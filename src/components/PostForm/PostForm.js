@@ -1,12 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { createPostSuccess, createPostError } from '../../actions/posts/actions';
-import { closeFrom } from '../../actions/postCreator/actions';
+import { closeFrom } from '../../actions/postForm/actions';
 import ApiService from '../../api/api';
-import {connect} from "react-redux";
+import styled from 'styled-components';
 
-import './style.css';
+const Wrapper = styled.div`
+  position: absolute;
+  display: ${props => props.isOpen ? 'flex' : 'none'};
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(246,246,246,0.8);
+  z-index: 1; 
+`;
 
-export class PostCreator extends React.Component {
+const Form = styled.form`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 20%;
+`;
+
+const Footer = styled.div`
+  display: flex;
+  justify-content: space-between
+`;
+
+export class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.default = {
@@ -39,9 +62,6 @@ export class PostCreator extends React.Component {
 
     if (this.props.post) {
       ApiService.update(`/posts/${this.state.id}`, { ...this.state })
-        .then((data) => {
-          console.log(data);
-        })
         .catch((err) => {
           console.log(err);
         });
@@ -61,43 +81,37 @@ export class PostCreator extends React.Component {
 
   render() {
     const { title, body } = this.state;
-    const { isOpen } = this.props;
-    const isFormOpen = isOpen ? "" : " display_none";
-    console.log(this.props);
 
     return (
-      <div className={`form-wrapper${isFormOpen}`}>
-        <form className="form" onSubmit={this.onSubmit}>
-          <label htmlFor="title"> Title</label>
+      <Wrapper isOpen>
+        <Form onSubmit={this.onSubmit}>
+          <label htmlFor="title">Title:</label>
           <input
             required=""
             id="title"
             type="text"
-            className="title_input"
             onChange={this.onTitleChange}
-            placeholder="Title"
+            placeholder="title"
             value={title}
           />
-          <label htmlFor="body"> Body</label>
+          <label htmlFor="body">Body:</label>
           <input
             type="text"
-            className="body_input"
-            placeholder="Body"
+            placeholder="body"
             id="body"
             onChange={this.onBodyChange}
             value={body}
           />
-          <div className="form__footer">
-            <button type="submit" className="button btn">
-              Create
-            </button>
-            <button type="button" className="button btn"
-                    onClick={this.handleClose}>
+          <Footer>
+            <button type="button" onClick={this.handleClose}>
               Close
             </button>
-          </div>
-        </form>
-      </div>
+            <button type="submit">
+              Create
+            </button>
+          </Footer>
+        </Form>
+      </Wrapper>
     );
   }
 }
@@ -118,4 +132,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PostCreator);
+)(PostForm);

@@ -1,7 +1,7 @@
 import {
   FORM_HAS_OPENED,
   FORM_HAS_CLOSED,
-} from '../actions/postCreator/types';
+} from '../actions/postForm/types';
 
 const initialState = {
   post: {},

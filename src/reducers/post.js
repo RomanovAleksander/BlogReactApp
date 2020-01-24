@@ -1,7 +1,9 @@
 import {
   FETCH_POST_REQUEST,
   FETCH_POST_SUCCESS,
-  FETCH_POST_FAILURE
+  FETCH_POST_FAILURE,
+  FETCH_UPDATE_SUCCESS,
+  FETCH_UPDATE_FAILURE
 } from '../actions/post/types';
 import {
   COMMENT_SUCCESS
@@ -35,6 +37,16 @@ export const post = (state = initialState, action) => {
         ...state,
         post: {},
         loading: false,
+        error: payload
+      };
+    case FETCH_UPDATE_SUCCESS:
+      return {
+        ...state,
+        post: payload,
+      };
+    case FETCH_UPDATE_FAILURE:
+      return {
+        ...state,
         error: payload
       };
     case COMMENT_SUCCESS:

@@ -1,9 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const NotF = styled.div`
+  text-align: center;
+`;
 
 export const NotFound = () => {
   return (
-    <div className="not-found">
+    <NotF>
       Not Found
-    </div>
+    </NotF>
   );
 };
