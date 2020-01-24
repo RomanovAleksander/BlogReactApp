@@ -12,7 +12,7 @@
     "redux-devtools-extension": "^2.13.8",
     "styled-components": "^4.2.0"
   },
-  "homepage": "https://romanovaleksander.github.io/js-band-final-task",
+  "homepage": "https://romanovaleksander.github.io/BlogReactApp",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
