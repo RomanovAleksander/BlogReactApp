@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ApiService from '../../api/api';
 import { postsRequested, postsLoaded, postsError } from '../../actions/posts/actions';
+import { openForm } from '../../actions/postCreator/actions';
 import { PostListItem } from '../PostListItem';
 import { ErrorIndicator } from '../ErrorIndicator';
 
@@ -35,6 +36,12 @@ class PostListContainer extends React.Component {
       })
   }
 
+  onCreate = () => {
+    const { openForm } = this.props;
+
+    openForm();
+  };
+
   render() {
     const { posts, loading, onView, error } = this.props;
 
@@ -47,9 +54,12 @@ class PostListContainer extends React.Component {
     }
 
     if (posts) {
-      return <PostList
-        onView={onView}
-        posts={posts} />;
+      return (
+        <>
+        <button onClick={this.onCreate}>Create</button>
+        <PostList onView={onView} posts={posts} />
+        </>
+      );
     }
   }
 }
@@ -65,7 +75,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   postsLoaded,
   postsRequested,
-  postsError
+  postsError,
+  openForm
 };
 
 export default connect(

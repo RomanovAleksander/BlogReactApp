@@ -1,1 +1,3 @@
-export { PostComments } from './PostComments';
+import PostComments from "./PostComments";
+
+export { PostComments };

@@ -1,0 +1,2 @@
+export const FORM_HAS_OPENED = 'FORM_HAS_OPENED';
+export const FORM_HAS_CLOSED = 'FORM_HAS_CLOSED';

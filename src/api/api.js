@@ -34,6 +34,16 @@ class ApiService {
     });
   }
 
+  async update(url, body) {
+    return this.fetchData(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+  }
+
   async delete(url) {
     return this.fetchData(url, {
       method: 'DEL',
